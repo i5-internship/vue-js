@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue JS</title>
+    <link rel="stylesheet" href="public/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <h3>Form Input</h3>
+                </div>
+                <hr>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" placeholder="Name..." v-model="name">
+                </div>
+                <div class="form-group">
+                    <label>Date Of Birth</label>
+                    <input type="text" class="form-control" placeholder="Date of birth" v-model="dob">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="M"
+                           v-model="gender">
+                    <label class="form-check-label" for="exampleRadios1">M</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="F"
+                           v-model="gender">
+                    <label class="form-check-label" for="exampleRadios2">F</label>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea cols="30" rows="10" class="form-control" v-model="address"></textarea>
+                </div>
+
+                <input type="submit" class="btn btn-sm btn-primary" value="Save" @click="getValue">
+                <input type="submit" class="btn btn-sm btn-danger" value="Clear" @click="clearValue">
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div>Name: {{ callName }}</div>
+                    <div>Date of Birth: {{ callDob}}</div>
+                    <div>Gender: {{ callGender}}</div>
+                    <div>Address: {{ callAddress}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="public/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="public/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="public/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="public/js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                name: '',
+                dob: '',
+                gender: '',
+                address: '',
+                callName: '',
+                callDob: '',
+                callGender: '',
+                callAddress: ''
+            }
+        },
+        methods: {
+            getValue () {
+                this.callName = this.name
+                this.callDob = this.dob
+                this.callGender = this.gender
+                this.callAddress = this.address
+            },
+            clearValue () {
+                this.name = ''
+                this.dob = ''
+                this.gender = ''
+                this.address = ''
+                this.callName = ''
+                this.callDob = ''
+                this.callGender = ''
+                this.callAddress = ''
+            }
+        }
+    })
+</script>
+</body>
+</html>
